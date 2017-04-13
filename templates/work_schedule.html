@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Employee Schedule</title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='shifts.css') }}">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th><h3>ID</th>
+				<th><h3>FIRST NAME</h3></th>
+				<th><h3>LAST NAME</h3></th>
+				<th><h3>DATE</h3></th>
+				<th><h3>SHIFT#</h3></th>
+			</tr>
+			{% for shift in schedules %}
+				<tr>
+					<td>{{ shift[0] }}</td>
+					<td>{{ shift[1] }}</td>
+					<td>{{ shift[2] }}</td>
+					<td>{{ shift[3] }}</td>
+					<td>{{ shift[4] }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
