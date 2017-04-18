@@ -13,13 +13,17 @@ CREATE TABLE PET (
 	date_in INT,
 	date_out INT NOT NULL,
 	owner TEXT,
-	FOREIGN KEY(owner) REFERENCES EMPLOYEE(phone)
+  pen INT,
+	FOREIGN KEY(owner) REFERENCES CUSTOMER(phone),
+  FOREIGN KEY(pen) REFERENCES EMPLOYEE(id)
 );
 CREATE TABLE PEN (
 	id INT PRIMARY KEY,
 	fill INT NOT NULL,
 	capacity INT NOT NULL,
 	finished INT NOT NULL,
+	worker INT,
+	FOREIGN KEY(worker) REFERENCES EMPLOYEE(enumb),
 	CHECK (capacity > 0 AND finished >= 0 AND finished <= 1)
 );
 CREATE TABLE SHIFT (

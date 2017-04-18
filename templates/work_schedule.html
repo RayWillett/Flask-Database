@@ -4,6 +4,9 @@
 		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='shifts.css') }}">
 	</head>
 	<body>
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
 		<table>
 			<tr>
 				<th><h3>ID</th>
@@ -11,6 +14,7 @@
 				<th><h3>LAST NAME</h3></th>
 				<th><h3>DATE</h3></th>
 				<th><h3>SHIFT#</h3></th>
+				<th><h3>Some other</h3></th>
 			</tr>
 			{% for shift in schedules %}
 				<tr>
@@ -19,6 +23,7 @@
 					<td>{{ shift[2] }}</td>
 					<td>{{ shift[3] }}</td>
 					<td>{{ shift[4] }}</td>
+                    <td>{{ shift[5] }}</td>
 				</tr>
 			{% endfor %}
 		</table>

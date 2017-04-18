@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome {{ user[1] }} {{ user[2] }}</h1>
+    <div>
+        <ul>
+            <li>
+                <a href="{{ url_for('show_work_schedule') }}">Schedule</a>
+            </li>
+            <li>
+                <a href="{{ url_for('show_feed_schedule') }}">Feed</a>
+            </li>
+            <li>
+                <a href="{{ url_for('show_pets') }}">Pets</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

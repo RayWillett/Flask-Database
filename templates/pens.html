@@ -1,9 +1,12 @@
 <html>
 	<head>
 		<title>Pens</title>
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='pens.css') }}">
+		<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='pens.css') }}">-->
 	</head>
 	<body>
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
 		<div class="pensWrapper">
 		{% for pen in pens %}
 			{{ pen }}

@@ -1,8 +1,51 @@
 <html>
 	<head>
 		<title>Feeding Schedule</title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='shifts.css') }}">
 	</head>
 	<body>
-		this is the feeding schedule page
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
+            <table>
+                <tr>
+                    <th>
+                        Pen ID
+                    </th>
+                    <th>
+                        Fill/Capacity
+                    </th>
+                    <th>
+                        Assigned To
+                    </th>
+                    <th>
+                        Fed/Unfed
+                    </th>
+                </tr>
+                {% for pen in pens %}
+                    <tr>
+                        <td>
+                            {{ pen[0]  }}
+                        </td>
+                        <td>
+                            {{ pen[1] }} / {{ pen[2] }}
+                        </td>
+                        <td>
+                            {{ pen[3]  }} {{ pen[4] }}
+                        </td>
+                        <td>
+                            {% if pen[-1] == 0 %}
+                                unfed
+                                <form method="POST" action="/feedPen/" id="feed-form">
+                                    <input type="hidden" name="penid" value="{{ pen[0] }}"/>
+                                    <button type="submit">Done</button>
+                                </form>
+                            {% else %}
+                                fed
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
 	</body>
 </html>

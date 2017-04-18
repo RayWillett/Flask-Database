@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pets</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='shifts.css') }}">
+</head>
+<body>
+    <div>
+        <a href="{{ url_for('index') }}">Home</a>
+    </div>
+    <form method="post" action="/newpet/" id="pets-form">
+        <fieldset>
+            <label for="pname">Name:</label>
+            <input name="pname" type="text"/><br />
+
+            <label for="fname">Owner First Name:</label>
+            <input name="fname" type="text"/><br />
+            <label for="lname">Owner Last Name:</label>
+            <input name="lname" type="text"/><br />
+
+            <label for="contact">Owner Contact:</label>
+            <input name="contact" type="phone"/><br />
+
+
+            <label for="datein">Date In:</label>
+            <input name="datein" type="date"/><br />
+            <label for="dateout">Date Out:</label>
+            <input name="dateout" type="date"/><br />
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+    <div>
+        <h2>Current Pets</h2>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Owner
+                </th>
+                <th>
+                    Contact
+                </th>
+                <th>
+                    Pen#
+                </th>
+                <th>
+                    Date In
+                </th>
+                <th>
+                    Date Out
+                </th>
+            </tr>
+        {% for pet in pets %}
+            <tr>
+                <td>
+                    {{ pet[0] }}
+                </td>
+                <td>
+                    {{ pet[1] }}
+                    {{ pet[2] }}
+                </td>
+                <td>
+                    {{ pet[3] }}
+                </td>
+                <td>
+                    {{ pet[4] }}
+                </td>
+                <td>
+                    {{ pet[5] }}
+                </td>
+                <td>
+                    {{ pet[6] }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
