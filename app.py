@@ -34,7 +34,7 @@ def handle_login():
 	user_id = request.form.to_dict()['userid']
 	employee = get_employee(user_id)
 	response = redirect('/', code=302)
-	response.set_cookie('username', str(employee[0]), expires=(int(time())+10));
+	response.set_cookie('username', str(employee[0]), expires=(int(time())+120));
 	return response
 
 @app.route('/feed/')
@@ -124,16 +124,8 @@ def update_pen_capacity():
 	open_pen = int(curr.fetchone()[0])
 	if open_pen is None:
 		return -1
-	curr.execute("UPDATE PEN SET fill = fill + 1")
+	curr.execute("UPDATE PEN SET fill = fill + 1 WHERE id={:d}".format(open_pen))
 	return open_pen
-
-# def get_todays_schedule(id=None):
-# 	cur = get_db().cursor()
-# 	if id is None:
-# 		cur.execute("SELECT * FROM SHIFT WHERE day = {:d}".format(get_date()))
-# 	else:
-# 		cur.execute("SELECT * FROM SHIFT WHERE worker = {:d}".format(int(id)))
-# 	return cur.fetchall()
 
 def get_db():
 	db = getattr(g, '_database', None)
